@@ -1,28 +1,37 @@
 package mystack;
 
-public class LinkedStack<E> implements Stack<E>{
+import mystack.interfaces.Stack;
+import java.util.EmptyStackException;
 
-    private E element;
-    private LinkedStack<E> next;
-    private LinkedStack<E> prev;
+public class LinkedStack<E> implements Stack<E> {
+
+    private int size = 0;
+    private Node<E> top;
 
     @Override
     public void push(E element) {
-
+        this.top = new Node<>(element, this.top);
+        size++;
     }
 
     @Override
     public E pop() {
-        return null;
+        if (empty()) throw new EmptyStackException();
+        E value = this.top.getValue();
+        this.top = this.top.getPred();
+        size--;
+        return value;
     }
 
     @Override
     public E peek() {
-        return null;
+        if (empty()) throw new EmptyStackException();
+        return this.top.getValue();
     }
 
     @Override
     public boolean empty() {
-        return false;
+        return size == 0;
     }
+
 }

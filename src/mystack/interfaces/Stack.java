@@ -1,8 +1,6 @@
-package mystack;
+package mystack.interfaces;
 
-import java.util.Collection;
-
-public interface Stack<E> {
+public interface Stack<E>{
     /**
      * Поместить элемент в стэк.
      *
